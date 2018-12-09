@@ -1,6 +1,5 @@
 package com.hylux.astarpathfindingexample;
 
-import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,12 +12,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Grid grid;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+
 
         List<Vector> allVectors = new ArrayList<>();
         allVectors.add(new Vector(0, 0, 0));
@@ -40,8 +38,12 @@ public class MainActivity extends AppCompatActivity {
             Log.d("VECTOR", allVectors.get(i).getNeighbours().toString());
         }
         Grid grid = new Grid(allVectors);
+        setContentView(new GridView(this, grid));
+
         Log.d("VECTOR GRID", grid.toString());
         List<Vector> path = grid.findPath(grid.getAllVectors().get(0), grid.getAllVectors().get(5));
         Log.d("VECTOR PATH", path.toString());
+
+
     }
 }
