@@ -60,11 +60,11 @@ public class Grid {
             }
 
             Collections.sort(open, Vector.PathLengthComparator);
-            Log.d("VECTOR OPEN", open.toString());
+            //Log.d("VECTOR OPEN", open.toString());
             if (open.contains(end)) {
                 //end.setParent(current);
                 current = end;
-                Log.d("VECTOR", "SUCCESS");
+                //Log.d("VECTOR", "SUCCESS");
                 break;
             }
             open.remove(current);
@@ -74,13 +74,13 @@ public class Grid {
 
         List<Vector> path = new ArrayList<>();
         path.add(0, current);
-        Log.d("VECTOR CURRENT", current.toString());
+        //Log.d("VECTOR CURRENT", current.toString());
         while (current != start) {
-            Log.d("VECTOR PARENT", current.getParent().toString());
+            //Log.d("VECTOR PARENT", current.getParent().toString());
             current = current.getParent();
             path.add(0, current);
         }
-        Log.d("VECTOR PATH", path.toString());
+        //Log.d("VECTOR PATH", path.toString());
         return path;
     }
 

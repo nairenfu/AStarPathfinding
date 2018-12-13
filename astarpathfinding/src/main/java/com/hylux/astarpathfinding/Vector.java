@@ -76,7 +76,7 @@ public class Vector extends Point{
         this.id = id;
 
         this.neighbours = new ArrayList<>();
-        Log.d("VECTOR", neighbours.toString());
+        //Log.d("VECTOR", neighbours.toString());
         this.parent = this;
         this.heuristic = -1f;
         this.pathLength = -1f;
@@ -102,6 +102,20 @@ public class Vector extends Point{
         @Override
         public int compare(Vector v1, Vector v2) {
             return Float.compare(v1.pathLength, v2.pathLength);
+        }
+    };
+
+    public static Comparator<Vector> XComparator = new Comparator<Vector>() {
+        @Override
+        public int compare(Vector v1, Vector v2) {
+            return Integer.compare(v1.x, v2.x);
+        }
+    };
+
+    public static Comparator<Vector> YComparator = new Comparator<Vector>() {
+        @Override
+        public int compare(Vector v1, Vector v2) {
+            return Integer.compare(v1.y, v2.y);
         }
     };
 
