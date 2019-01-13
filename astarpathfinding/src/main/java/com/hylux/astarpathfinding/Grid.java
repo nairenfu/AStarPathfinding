@@ -5,8 +5,11 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class Grid {
+
+    private Map<Integer, Vector> vectors;
 
     private List<Vector> allVectors, unvisited, open, closed;
 
@@ -18,8 +21,16 @@ public class Grid {
         this.allVectors = allVectors;
     }
 
+    public Map<Integer, Vector> getVectors() {
+        return vectors;
+    }
+
     public List<Vector> findPath(Vector start, Vector end) { //TODO Check if start, end both in allV? Trivial start = end?
-        unvisited = allVectors;
+        if (allVectors != null) {
+            unvisited = allVectors;
+        } else {
+            unvisited = new ArrayList<>(vectors.values());
+        }
 
         //TODO need to initalise lists?
 
@@ -87,6 +98,14 @@ public class Grid {
     public Grid(List<Vector> allVectors) {
         this.allVectors = allVectors;
         Collections.sort(allVectors, Vector.IdComparator);
+
+        unvisited = new ArrayList<>();
+        open = new ArrayList<>();
+        closed = new ArrayList<>();
+    }
+
+    public Grid(Map<Integer, Vector> vectors) {
+        this.vectors = vectors;
 
         unvisited = new ArrayList<>();
         open = new ArrayList<>();
