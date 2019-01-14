@@ -1,5 +1,8 @@
 package com.hylux.astarpathfinding;
 
+import android.graphics.Point;
+import android.util.Log;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
@@ -23,7 +26,6 @@ public class Utility {
     }
 
     public static float edgeDistance(Vector a, Vector b, int type) {
-
         float dx = abs(a.x - b.x);
         float dy = abs(a.y - b.y);
         switch (type) {
@@ -33,5 +35,15 @@ public class Utility {
 
             default: return dx + dy;
         }
+    }
+
+    public static Point normalToAndroidPosition(Point normal, Point dimensions, Point xRange, Point yRange, int border) {
+        //Log.d("NORMAL: ", normal.toString());
+        Point range = new Point(xRange.y-xRange.x, yRange.y-yRange.x);
+        Point unit = new Point((dimensions.x-2*border)/range.x, (dimensions.y-2*border)/range.y);
+        Point origin = new Point(unit.x*(-xRange.x)+border, unit.y*yRange.x+dimensions.y-border);
+        Point android = new Point(origin.x+unit.x*normal.x, origin.y-unit.y*normal.y);
+        //Log.d("ANDROID: ", android.toString());
+        return android;
     }
 }

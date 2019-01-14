@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity {
             Log.d("VECTOR", allVectors.get(i).getNeighbours().toString());
         }*/
         Grid grid = new Grid(allVectors);
-        GridView gridView = new GridView(this, grid);
-        setContentView(gridView);
+        //GridView gridView = new GridView(this, grid);
+        MapView mapView = new MapView(this, grid);
+        setContentView(mapView);
 
         //Log.d("VECTOR GRID", grid.toString());
         List<Vector> path = grid.findPath(grid.getAllVectors().get(0), grid.getAllVectors().get(5));
-        gridView.drawPath(path);
+        //gridView.drawPath(path);
+        mapView.drawPath(path);
         Log.d("VECTOR PATH", path.toString());
     }
 }

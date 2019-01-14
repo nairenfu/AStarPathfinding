@@ -34,7 +34,6 @@ public class Grid {
 
         //TODO need to initalise lists?
 
-
         unvisited.remove(start);
         open.add(start);
         Vector current = start;
